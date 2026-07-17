@@ -35,17 +35,22 @@ const CoachPage = ({
   const meta = data?.data?.meta as TMetaConfig;
   return (
     <div>
-      <div className="flex items-center justify-between pb-2">
+      <div className="flex flex-col lg:flex-row  justify-between pb-2">
         <SearchBar
-          placeholder="Search permission..."
+          placeholder="Search code name type layout seats status..."
           value={searchItem}
           onChange={(e) => setSearch(e.target.value)}
           onClear={() => setSearch("")}
         />
-        <Button onClick={() => setModalOpen(true)}>
-          <Plus size={18} />
-          Create Coach
-        </Button>
+        <div className="flex items-center justify-between gap-5 pt-5 lg:pt-0">
+          <h1 className="text-2xl font-semibold text-[#006A4E]">
+            Total: {meta?.totalData ?? "00"}
+          </h1>
+          <Button onClick={() => setModalOpen(true)}>
+            <Plus size={18} />
+            Create Coach
+          </Button>
+        </div>
       </div>
       {isLoading ? (
         <CustomLoader />

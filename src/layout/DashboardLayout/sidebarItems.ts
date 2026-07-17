@@ -10,56 +10,6 @@ export const adminSidebarItems = [
     icon: "LayoutDashboard",
     path: "/dashboard/admin",
   },
-
-  // Train
-  {
-    label: "Train Management",
-    icon: "Train",
-    children: [
-      {
-        label: "All Trains",
-        path: "/dashboard/admin/trains",
-      },
-      {
-        label: "Create Train",
-        path: "/dashboard/admin/trains/create",
-      },
-      {
-        label: "Train Schedule",
-        path: "/dashboard/admin/trains/schedule",
-      },
-      {
-        label: "Train Assignment",
-        path: "/dashboard/admin/trains/assignment",
-      },
-    ],
-  },
-  // Coach
-  {
-    label: "Coach Management",
-    icon: "Coach",
-    children: [
-      {
-        label: "Coach Models",
-        path: "/dashboard/admin/coaches/model",
-      },
-      {
-        label: "All Coaches",
-        path: "/dashboard/admin/coaches",
-      },
-
-      {
-        label: "Assigned coaches",
-        path: "/dashboard/admin/coaches/assigned",
-      },
-
-      {
-        label: "Available coaches",
-        path: "/dashboard/admin/coaches/available",
-      },
-    ],
-  },
-
   // Station
   {
     label: "Station Management",
@@ -72,10 +22,6 @@ export const adminSidebarItems = [
       {
         label: "Create Station",
         path: "/dashboard/admin/stations/create",
-      },
-      {
-        label: "Platforms",
-        path: "/dashboard/admin/platforms",
       },
     ],
   },
@@ -92,12 +38,79 @@ export const adminSidebarItems = [
         label: "Create Route",
         path: "/dashboard/admin/routes/create",
       },
+    ],
+  },
+
+  // Coach
+  {
+    label: "Coach Management",
+    icon: "Coach",
+    children: [
       {
-        label: "Route Map",
-        path: "/dashboard/admin/routes/map",
+        label: "Coach Models",
+        path: "/dashboard/admin/coaches/model",
+      },
+      {
+        label: "Create Model",
+        path: "/dashboard/admin/coaches/model/create",
+      },
+
+      {
+        label: "All Coaches",
+        path: "/dashboard/admin/coaches",
+      },
+
+      {
+        label: "Assigned coaches",
+        path: "/dashboard/admin/coaches/assigned",
+      },
+
+      {
+        label: "Available coaches",
+        path: "/dashboard/admin/coaches/available",
+      },
+      {
+        label: "Maintenance coaches",
+        path: "/dashboard/admin/coaches/maintenance",
       },
     ],
   },
+  // Train
+  {
+    label: "Train Management",
+    icon: "Train",
+    children: [
+      {
+        label: "All Trains",
+        path: "/dashboard/admin/trains",
+      },
+
+      {
+        label: "Train Schedule",
+        path: "/dashboard/admin/trains/schedule",
+      },
+      {
+        label: "Train Assignment",
+        path: "/dashboard/admin/trains/assignment",
+      },
+    ],
+  },
+  // Fare
+  {
+    label: "Fare Management",
+    icon: "BadgeDollarSign",
+    children: [
+      {
+        label: "Fare List",
+        path: "/dashboard/admin/fares",
+      },
+      {
+        label: "Create Fare",
+        path: "/dashboard/admin/fares/create",
+      },
+    ],
+  },
+
   // Ticket
   {
     label: "Ticket Management",
@@ -150,22 +163,6 @@ export const adminSidebarItems = [
       {
         label: "Permissions",
         path: "/dashboard/admin/permissions",
-      },
-    ],
-  },
-
-  // Fare
-  {
-    label: "Fare Management",
-    icon: "BadgeDollarSign",
-    children: [
-      {
-        label: "Fare List",
-        path: "/dashboard/admin/fares",
-      },
-      {
-        label: "Create Fare",
-        path: "/dashboard/admin/fares/create",
       },
     ],
   },

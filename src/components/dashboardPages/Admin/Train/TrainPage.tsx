@@ -91,7 +91,7 @@ const TrainPage = ({ limit, page, search }: TQuery) => {
                         {
                           id: 1,
                           label: "Details",
-                          path: `train/details/${item?.id}`,
+                          path: `trains/details/${item?.trainId}`,
                         },
                       ]}
                       buttons={[

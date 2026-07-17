@@ -1,3 +1,4 @@
+import { TQuery } from "@/interface/query";
 import baseApi from "../baseApi";
 
 const coachModelApi = baseApi.injectEndpoints({
@@ -11,7 +12,8 @@ const coachModelApi = baseApi.injectEndpoints({
 
     // GET ALL COACH MODEL
     getAllCoachModel: builder.query({
-      query: () => `/coach-model/all`,
+      query: (payload: TQuery) =>
+        `/coach-model/all?search=${payload.search}&page=${payload?.page}&limit=${payload?.limit}`,
       providesTags: ["COACH_MODEL"],
     }),
     getSingleCoachModel: builder.query({

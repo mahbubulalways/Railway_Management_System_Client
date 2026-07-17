@@ -22,6 +22,6 @@ export interface ICoach {
   coachModel: ICoachModel;
   status: "AVAILABLE" | "ASSIGNED" | "MAINTENANCE";
   seats: ISeat[];
-
+  _count: { seats: number };
   createdAt: string;
 }

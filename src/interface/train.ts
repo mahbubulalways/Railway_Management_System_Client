@@ -1,3 +1,5 @@
+import { ICoach } from "./coach";
+
 export interface ITrain {
   id: string;
   trainId: string;
@@ -16,6 +18,7 @@ export interface ITrain {
   notes: string | null;
   createdAt: string;
   updatedAt: string;
+  coaches: ITrainCoach[];
   _count: {
     coaches: number;
   };
@@ -37,4 +40,12 @@ export interface ICreateTrain {
     manufactureYear?: number | null;
     notes?: string | null;
   };
+}
+
+interface ITrainCoach {
+  id: string;
+  trainId: string;
+  coachId: string;
+  sequence: number;
+  coach: ICoach;
 }

@@ -20,6 +20,7 @@ export const baseApi = createApi({
     "COACH",
     "ROUTE",
     "TRAIN",
+    "SCHEDULE",
   ],
 });
 

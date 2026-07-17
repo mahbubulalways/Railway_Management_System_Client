@@ -126,6 +126,7 @@ const StaffTypePage = ({ page, limit }: { page: number; limit: number }) => {
           <TablePagination
             page={meta?.page ?? 1}
             totalPages={meta?.totalPages ?? 1}
+            dataLength={staffTypes?.length}
           />
         </>
       )}

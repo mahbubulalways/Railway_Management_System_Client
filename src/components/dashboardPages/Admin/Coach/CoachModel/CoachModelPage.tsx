@@ -24,12 +24,12 @@ const CoachModelPage = ({
   limit: number;
   search: string;
 }) => {
-  const { isLoading, data, isError } = useGetAllCoachModelQuery(
-    { page, limit },
+  const { isLoading, data, isError, error } = useGetAllCoachModelQuery(
+    { page, limit, search },
     { refetchOnMountOrArgChange: true },
   );
-
-  const coachModels = data?.data || [];
+  console.log(error);
+  const coachModels = data?.data?.data || [];
   const meta = data?.data?.meta as TMetaConfig;
 
   const [searchItem, setSearch] = useState("");
@@ -38,7 +38,7 @@ const CoachModelPage = ({
     <div>
       <div className="flex items-center justify-between pb-2">
         <SearchBar
-          placeholder="Search permission..."
+          placeholder="Search name, seats, type..."
           value={searchItem}
           onChange={(e) => setSearch(e.target.value)}
           onClear={() => setSearch("")}

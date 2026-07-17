@@ -33,4 +33,5 @@ export interface IRouteResponse {
   sourceStation: IStation;
   createdAt: string;
   routeStations: IRouteStation[];
+  _count: { routeStations: number };
 }

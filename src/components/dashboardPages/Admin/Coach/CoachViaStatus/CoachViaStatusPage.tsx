@@ -1,6 +1,5 @@
 "use client";
-
-import Button from "@/components/reusable/Button";
+import CreateCoachModal from "@/components/modals/CreateCoachModal";
 import CustomLoader from "@/components/reusable/CustomLoader";
 import CustomStatus from "@/components/reusable/CustomStatus";
 import SearchBar from "@/components/reusable/SearchBar";
@@ -10,24 +9,30 @@ import { TD, TH } from "@/components/reusable/TableCell";
 import { TableHead } from "@/components/reusable/TableHead";
 import { TablePagination } from "@/components/reusable/TablePagination";
 import { TableRow } from "@/components/reusable/TableRow";
-import { TQuery } from "@/interface/query";
-import { IRouteResponse } from "@/interface/route";
-import { useGetAllRouteQuery } from "@/redux/features/route.feature";
-import { Plus } from "lucide-react";
+import { ICoach } from "@/interface/coach";
+import { useGetCoachViaStatusQuery } from "@/redux/features/coach.features";
 import moment from "moment";
-import Link from "next/link";
-import { useState } from "react";
+import React, { useState } from "react";
 
-const RoutePage = ({ limit, page, search }: TQuery) => {
-  const { isError, isLoading, data } = useGetAllRouteQuery(
-    { limit, page, search },
+const CoachViaStatusPage = ({
+  page,
+  limit,
+  search,
+  status,
+}: {
+  page: number;
+  limit: number;
+  search: string;
+  status: string;
+}) => {
+  const [isModalOpen, setModalOpen] = useState<boolean>(false);
+  const [searchItem, setSearch] = useState("");
+  const { isLoading, data, isError } = useGetCoachViaStatusQuery(
+    { page, limit, search, status },
     { refetchOnMountOrArgChange: true },
   );
-
-  const permissions = data?.data?.data || [];
+  const coaches = data?.data?.data || [];
   const meta = data?.data?.meta as TMetaConfig;
-
-  const [searchItem, setSearch] = useState("");
 
   return (
     <div>
@@ -38,18 +43,20 @@ const RoutePage = ({ limit, page, search }: TQuery) => {
           onChange={(e) => setSearch(e.target.value)}
           onClear={() => setSearch("")}
         />
-        <Link href={"routes/create"}>
-          <Button>
-            <Plus size={18} />
-            Create Route
-          </Button>
-        </Link>
+        {meta?.totalData ? (
+          <h1 className="text-2xl font-semibold text-[#006A4E]">
+            Total:
+            {meta?.totalData > 10 ? meta?.totalData : `0${meta?.totalData}`}
+          </h1>
+        ) : (
+          ""
+        )}
       </div>
       {isLoading ? (
         <CustomLoader />
       ) : isError ? (
         <CustomStatus type="error" />
-      ) : !permissions?.length ? (
+      ) : !coaches?.length ? (
         <CustomStatus type="empty" />
       ) : (
         <div className="relative">
@@ -57,12 +64,14 @@ const RoutePage = ({ limit, page, search }: TQuery) => {
             <TableHead>
               <TableRow>
                 <TH>SL</TH>
-                <TH>Route Name</TH>
-                <TH>Source</TH>
-                <TH>Destination</TH>
-                <TH>Distance</TH>
-                <TH>Stations</TH>
-                <TH>Creation Date</TH>
+                <TH>Code</TH>
+                <TH>Name</TH>
+                <TH>Type</TH>
+                <TH>Coach Model</TH>
+                <TH>Layout</TH>
+                <TH>Seats</TH>
+                <TH>Staus</TH>
+                <TH>Date</TH>
                 <TH>Action</TH>
               </TableRow>
             </TableHead>
@@ -73,22 +82,25 @@ const RoutePage = ({ limit, page, search }: TQuery) => {
     [&_tr:nth-child(even)]:bg-gray-50
   "
             >
-              {permissions?.map((item: IRouteResponse, idx: number) => (
+              {coaches?.map((item: ICoach, idx: number) => (
                 <TableRow key={item?.id}>
                   <TD>{++idx}</TD>
-                  <TD>{item?.name}</TD>
-                  <TD>{item?.sourceStation?.name}</TD>
-                  <TD>{item?.destinationStation?.name}</TD>
-                  <TD>{item?.distance}km</TD>
-                  <TD>{item?._count?.routeStations}</TD>
+                  <TD>{item?.coachCode}</TD>
+                  <TD>{item?.coachNumber}</TD>
+                  <TD>{item?.coachModel?.type}</TD>
+                  <TD>{item?.coachModel?.name}</TD>
+                  <TD>{item?.coachModel?.layoutType}</TD>
+                  <TD>{item?.coachModel?.totalSeats}</TD>
+                  <TD>{item?.status}</TD>
                   <TD>{moment(item?.createdAt).format("ll")}</TD>
+
                   <TD>
                     <TableAction
                       links={[
                         {
                           id: 1,
-                          label: "Details",
-                          path: `routes/details/${item?.id}`,
+                          label: "View Details",
+                          path: `coaches/${item?.id}`,
                         },
                       ]}
                     />
@@ -100,12 +112,19 @@ const RoutePage = ({ limit, page, search }: TQuery) => {
           <TablePagination
             page={meta?.page ?? 1}
             totalPages={meta?.totalPages ?? 1}
-            dataLength={permissions?.length}
+            dataLength={coaches?.length}
           />
         </div>
+      )}
+
+      {isModalOpen && (
+        <CreateCoachModal
+          isOpen={isModalOpen}
+          onClose={() => setModalOpen(false)}
+        />
       )}
     </div>
   );
 };
 
-export default RoutePage;
+export default CoachViaStatusPage;

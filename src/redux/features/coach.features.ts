@@ -32,6 +32,12 @@ const coachApi = baseApi.injectEndpoints({
       query: (id: string) => `/coach/single/${id}`,
       providesTags: ["COACH"],
     }),
+    // GET SINGLE COACH
+    getCoachViaStatus: builder.query({
+      query: (payload: TQuery) =>
+        `/coach/status?search=${payload.search}&status=${payload.status}&page=${payload?.page}&limit=${payload?.limit}`,
+      providesTags: ["COACH"],
+    }),
   }),
 });
 
@@ -40,4 +46,5 @@ export const {
   useGetAllCoachQuery,
   useGetSingleCoachQuery,
   useGetCoachOptionsQuery,
+  useGetCoachViaStatusQuery,
 } = coachApi;
