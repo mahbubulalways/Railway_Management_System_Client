@@ -27,10 +27,10 @@ const scheduleApi = baseApi.injectEndpoints({
       providesTags: ["SCHEDULE"],
     }),
 
-    // GET SINGLE ROUTE
-    getSingleRoute: builder.query({
-      query: (id: string) => `/route/single/${id}`,
-      providesTags: ["ROUTE"],
+    // GET SINGLE SCHEDULE
+    getSingleSchedule: builder.query({
+      query: (id: string) => `/schedule/single/${id}`,
+      providesTags: ["SCHEDULE"],
     }),
   }),
 });
@@ -38,6 +38,6 @@ const scheduleApi = baseApi.injectEndpoints({
 export const {
   useCreateScheduleMutation,
   useGetTrainRouteOptionsQuery,
-  useGetSingleRouteQuery,
+  useGetSingleScheduleQuery,
   useGetAllScheduleQuery,
 } = scheduleApi;

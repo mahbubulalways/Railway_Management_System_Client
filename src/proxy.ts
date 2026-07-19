@@ -1,9 +1,9 @@
 // proxy.ts  ← ফাইলের নাম এটাই হবে
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import { decodedToken } from "./src/utils/jwt_decode";
-import { IToken } from "./src/interface/token";
-import { AUTH_KEY } from "./src/constant";
+import { decodedToken } from "./utils/jwt_decode";
+import { IToken } from "./interface/token";
+import { AUTH_KEY } from "./constant";
 
 export function proxy(request: NextRequest) {
   const token = request.cookies.get(AUTH_KEY)?.value;

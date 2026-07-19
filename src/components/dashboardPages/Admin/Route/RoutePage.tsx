@@ -33,7 +33,7 @@ const RoutePage = ({ limit, page, search }: TQuery) => {
     <div>
       <div className="flex items-center justify-between pb-2">
         <SearchBar
-          placeholder="Search permission..."
+          placeholder="Search name..."
           value={searchItem}
           onChange={(e) => setSearch(e.target.value)}
           onClear={() => setSearch("")}

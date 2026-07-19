@@ -36,7 +36,7 @@ const StationPage = ({
     <div className="relative">
       <div className="flex items-center justify-between pb-2">
         <SearchBar
-          placeholder="Name id division district..."
+          placeholder="Search id division district..."
           value={searchItem}
           onChange={(e) => setSearchItem(e.target.value)}
           onClear={() => setSearchItem("")}

@@ -1,4 +1,5 @@
 import { ICoach } from "./coach";
+import { IScheduleResponse } from "./schedule";
 
 export interface ITrain {
   id: string;
@@ -19,6 +20,7 @@ export interface ITrain {
   createdAt: string;
   updatedAt: string;
   coaches: ITrainCoach[];
+  schedules: IScheduleResponse[];
   _count: {
     coaches: number;
   };

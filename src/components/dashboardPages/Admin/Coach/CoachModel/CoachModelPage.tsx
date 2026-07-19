@@ -70,6 +70,8 @@ const CoachModelPage = ({
                 <TH>Name</TH>
                 <TH>Type</TH>
                 <TH>Seats</TH>
+                <TH>Price/km</TH>
+                <TH>Minimum price</TH>
                 <TH>Date</TH>
                 <TH>Action</TH>
               </TableRow>
@@ -92,6 +94,8 @@ const CoachModelPage = ({
                   </TD>
                   <TD>{item?.type}</TD>
                   <TD>{item?.totalSeats}</TD>
+                  <TD>{item?.pricePerKm}Tk</TD>
+                  <TD>{item?.minimumFare ?? "00"}Tk</TD>
                   <TD>{moment(item?.createdAt).format("ll")}</TD>
 
                   <TD>

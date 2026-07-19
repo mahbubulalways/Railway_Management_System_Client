@@ -13,6 +13,10 @@ export interface IRouteStation {
   isMajorStop: boolean;
   sequence: number;
   distanceFromStart: number;
+
+  //not db attribute those are just calculation from server
+  arrivalTime: string;
+  departureTime: string;
 }
 export interface ICreateRoute {
   data: {

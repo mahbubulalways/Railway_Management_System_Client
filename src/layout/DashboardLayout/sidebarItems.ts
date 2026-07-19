@@ -89,27 +89,23 @@ export const adminSidebarItems = [
         label: "Train Schedule",
         path: "/dashboard/admin/trains/schedule",
       },
-      {
-        label: "Train Assignment",
-        path: "/dashboard/admin/trains/assignment",
-      },
     ],
   },
   // Fare
-  {
-    label: "Fare Management",
-    icon: "BadgeDollarSign",
-    children: [
-      {
-        label: "Fare List",
-        path: "/dashboard/admin/fares",
-      },
-      {
-        label: "Create Fare",
-        path: "/dashboard/admin/fares/create",
-      },
-    ],
-  },
+  // {
+  //   label: "Fare Management",
+  //   icon: "BadgeDollarSign",
+  //   children: [
+  //     {
+  //       label: "Fare List",
+  //       path: "/dashboard/admin/fares",
+  //     },
+  //     {
+  //       label: "Create Fare",
+  //       path: "/dashboard/admin/fares/create",
+  //     },
+  //   ],
+  // },
 
   // Ticket
   {

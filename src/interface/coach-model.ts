@@ -23,6 +23,8 @@ export interface ICoachModel {
   createdAt: string;
   updatedAt: string;
 
+  pricePerKm: number;
+  minimumFare: number;
   seats: ICoachModelSeat[];
   coaches: [];
 }
@@ -39,5 +41,7 @@ export type TCreateCoachModel = {
     type: string;
     totalSeats: number;
     layout: TCoachModelLayout[];
+    pricePerKm: number;
+    minimumFare: number;
   };
 };

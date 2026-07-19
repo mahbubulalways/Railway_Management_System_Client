@@ -24,7 +24,7 @@ const TrainDetailsPage = ({ id }: { id: string }) => {
       (acc, item) => acc + (item.coach?._count?.seats || 0),
       0,
     ) || 0;
-
+  console.log(train);
   return (
     <div className="space-y-8">
       <div className="relative overflow-hidden rounded-3xl border border-gray-100 bg-white shadow">
@@ -129,6 +129,104 @@ const TrainDetailsPage = ({ id }: { id: string }) => {
             </div>
           </Link>
         ))}
+      </div>
+
+      {/* Schedules */}
+      <div className="rounded-xl bg-white p-6 shadow">
+        <div className="mb-5 flex items-center justify-between">
+          <div>
+            <h2 className="text-xl font-semibold">Schedules</h2>
+            <p className="text-sm text-gray-500">
+              {train.schedules.length} Schedule
+              {train.schedules.length !== 1 && "s"} Available
+            </p>
+          </div>
+        </div>
+
+        {train.schedules.length === 0 ? (
+          <div className="rounded-xl border border-dashed p-10 text-center text-gray-500">
+            No schedules found.
+          </div>
+        ) : (
+          <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+            {train.schedules.map((schedule) => (
+              <Link
+                key={schedule.id}
+                href={`/dashboard/admin/trains/schedule/details/${schedule.id}`}
+                className="group"
+              >
+                <div className="rounded-2xl border border-gray-200 bg-white p-5 shadow transition-all duration-300 hover:-translate-y-1 hover:border-[#006A4E]/40 hover:shadow-lg">
+                  {/* Header */}
+                  <div className="flex items-start justify-between">
+                    <div>
+                      <h3 className="font-semibold">{schedule.name}</h3>
+
+                      <p className="mt-1 text-sm text-gray-500">
+                        {schedule.route.name}
+                      </p>
+                    </div>
+
+                    <span
+                      className={`rounded-full px-3 py-1 text-xs font-medium ${
+                        schedule.isActive
+                          ? "bg-green-100 text-green-700"
+                          : "bg-red-100 text-red-700"
+                      }`}
+                    >
+                      {schedule.isActive ? "Active" : "Inactive"}
+                    </span>
+                  </div>
+
+                  {/* Details */}
+                  <div className="mt-5 space-y-3 text-sm">
+                    <div className="flex items-center justify-between">
+                      <span className="text-gray-500">Direction</span>
+                      <span className="font-medium">{schedule.direction}</span>
+                    </div>
+
+                    <div className="flex items-center justify-between">
+                      <span className="text-gray-500">Start Time</span>
+                      <span className="font-medium">{schedule.startTime}</span>
+                    </div>
+
+                    <div className="flex items-center justify-between">
+                      <span className="text-gray-500">Booking Opens</span>
+                      <span className="font-medium">
+                        {schedule.bookingOpenDays} Days Before
+                      </span>
+                    </div>
+
+                    <div>
+                      <p className="mb-2 text-gray-500">Running Days</p>
+
+                      <div className="flex flex-wrap gap-2">
+                        {schedule.runningDays.map((day) => (
+                          <span
+                            key={day}
+                            className="rounded-full bg-[#006A4E]/10 px-2 py-1 text-xs font-medium text-[#006A4E]"
+                          >
+                            {day.slice(0, 3)}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Footer */}
+                  <div className="mt-5 flex items-center justify-between border-t pt-4">
+                    <span className="text-xs text-gray-400">
+                      View Schedule Details
+                    </span>
+
+                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#006A4E]/10 transition group-hover:bg-[#006A4E]">
+                      <ArrowRight className="h-4 w-4 text-[#006A4E] group-hover:text-white" />
+                    </div>
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );

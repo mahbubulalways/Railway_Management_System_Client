@@ -94,7 +94,7 @@ const HomeBanner = () => {
               hover:bg-white/10
               "
             >
-              View Schedule
+              Create Account
             </button>
           </div>
         </div>

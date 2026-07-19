@@ -94,9 +94,27 @@ const CreateCoachModelPage = () => {
             register={register}
             type="number"
             error={errors.data?.totalSeats}
-            label="Coach name"
+            label="Seats"
             placeholder="Enter seats"
             rules={{ required: "Seats is required." }}
+          />
+          <CustomInput
+            name="data.pricePerKm"
+            register={register}
+            type="number"
+            error={errors.data?.pricePerKm}
+            label="Price/km"
+            placeholder="Enter price/km"
+            rules={{ required: "Price/km is required." }}
+          />
+          <CustomInput
+            name="data.minimumFare"
+            register={register}
+            type="number"
+            error={errors.data?.minimumFare}
+            label="Minimum Fare"
+            placeholder="Enter minimum fare"
+            rules={{ required: "Minimum fare is required." }}
           />
         </div>
         <CoachLayoutArray
