@@ -1,4 +1,5 @@
 import { ICoachModel, TSeatSide, TSeatType } from "./coach-model";
+import { ITrain } from "./train";
 
 export interface ISeat {
   id: string;
@@ -20,6 +21,9 @@ export interface ICoach {
   coachModelId: string;
 
   coachModel: ICoachModel;
+  trainCoach: {
+    train: ITrain;
+  };
   status: "AVAILABLE" | "ASSIGNED" | "MAINTENANCE";
   seats: ISeat[];
   _count: { seats: number };

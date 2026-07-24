@@ -56,7 +56,7 @@ const TrainPage = ({ limit, page, search }: TQuery) => {
         <div className="relative">
           <Table>
             <TableHead>
-              <TableRow>
+              <TableRow types="HEAD">
                 <TH>SL</TH>
                 <TH>Train Id</TH>
                 <TH>Name</TH>
@@ -64,19 +64,15 @@ const TrainPage = ({ limit, page, search }: TQuery) => {
                 <TH>max Speed</TH>
                 <TH>manufacture Year</TH>
                 <TH>Coaches</TH>
+                <TH>Schedules</TH>
                 <TH>Creation Date</TH>
                 <TH>Action</TH>
               </TableRow>
             </TableHead>
 
-            <tbody
-              className="
-    [&_tr:nth-child(odd)]:bg-white
-    [&_tr:nth-child(even)]:bg-gray-50
-  "
-            >
+            <tbody>
               {trains?.map((item: ITrain, idx: number) => (
-                <TableRow key={item?.id}>
+                <TableRow key={item?.id} idx={idx} types="BODY">
                   <TD>{++idx}</TD>
                   <TD>{item?.trainId}</TD>
                   <TD>{item?.name}</TD>
@@ -84,6 +80,7 @@ const TrainPage = ({ limit, page, search }: TQuery) => {
                   <TD>{item?.maxSpeed}</TD>
                   <TD>{item?.manufactureYear}</TD>
                   <TD>{item?._count?.coaches}</TD>
+                  <TD>{item?._count?.schedules}</TD>
                   <TD>{moment(item?.createdAt).format("ll")}</TD>
                   <TD>
                     <TableAction

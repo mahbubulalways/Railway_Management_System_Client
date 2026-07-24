@@ -1,5 +1,6 @@
 "use client";
-
+import { logOutUserFromSystem } from "@/service/logOutFromTheSystem";
+import { useRouter } from "next/navigation";
 import { Dispatch, SetStateAction, useState } from "react";
 import {
   FiMenu,
@@ -8,6 +9,7 @@ import {
   FiMail,
   FiChevronDown,
 } from "react-icons/fi";
+import { LogoutOverlay } from "./LogoutOverlay";
 
 const AdminDashboardNavbar = ({
   setSidebarOpen,
@@ -15,6 +17,15 @@ const AdminDashboardNavbar = ({
   setSidebarOpen: Dispatch<SetStateAction<boolean>>;
 }) => {
   const [profileOpen, setProfileOpen] = useState(false);
+  const [logout, setLogout] = useState(false);
+  const router = useRouter();
+  const handleLogout = () => {
+    logOutUserFromSystem();
+    setLogout(true);
+    setTimeout(() => {
+      router.push("/");
+    }, 3000);
+  };
 
   return (
     <header
@@ -85,13 +96,17 @@ const AdminDashboardNavbar = ({
               <button className="block w-full text-left px-4 py-2 hover:bg-gray-100">
                 Settings
               </button>
-              <button className="block w-full text-left px-4 py-2 hover:bg-gray-100 text-red-600">
+              <button
+                onClick={handleLogout}
+                className="block w-full text-left px-4 py-2 hover:bg-gray-100 text-red-600"
+              >
                 Log out
               </button>
             </div>
           )}
         </div>
       </div>
+      {logout && <LogoutOverlay />}
     </header>
   );
 };

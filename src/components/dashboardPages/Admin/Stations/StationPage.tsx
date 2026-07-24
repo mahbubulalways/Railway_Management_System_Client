@@ -58,7 +58,7 @@ const StationPage = ({
         <>
           <Table>
             <TableHead>
-              <TableRow>
+              <TableRow types="HEAD">
                 <TH>SL</TH>
                 <TH>ID</TH>
                 <TH>Name</TH>
@@ -71,14 +71,9 @@ const StationPage = ({
               </TableRow>
             </TableHead>
 
-            <tbody
-              className="
-    [&_tr:nth-child(odd)]:bg-white
-    [&_tr:nth-child(even)]:bg-gray-50
-  "
-            >
+            <tbody>
               {stations?.map((item: IStation, idx: number) => (
-                <TableRow key={item?.id}>
+                <TableRow key={item?.id} types="BODY" idx={idx}>
                   <TD>{++idx}</TD>
                   <TD>{item?.stationId}</TD>
                   <TD>{item?.name}</TD>

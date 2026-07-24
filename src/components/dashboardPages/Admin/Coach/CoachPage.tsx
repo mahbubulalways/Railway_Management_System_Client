@@ -67,7 +67,7 @@ const CoachPage = ({
           )} */}
           <Table>
             <TableHead>
-              <TableRow>
+              <TableRow types="HEAD">
                 <TH>SL</TH>
                 <TH>Code</TH>
                 <TH>Name</TH>
@@ -81,14 +81,9 @@ const CoachPage = ({
               </TableRow>
             </TableHead>
 
-            <tbody
-              className="
-    [&_tr:nth-child(odd)]:bg-white
-    [&_tr:nth-child(even)]:bg-gray-50
-  "
-            >
+            <tbody>
               {coaches?.map((item: ICoach, idx: number) => (
-                <TableRow key={item?.id}>
+                <TableRow key={item?.id} types="BODY" idx={idx}>
                   <TD>{++idx}</TD>
                   <TD>{item?.coachCode}</TD>
                   <TD>{item?.coachNumber}</TD>

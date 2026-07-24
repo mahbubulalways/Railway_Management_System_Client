@@ -58,7 +58,7 @@ const TrainSchedulePage = ({ limit, page, search }: TQuery) => {
           <div className="relative">
             <Table>
               <TableHead>
-                <TableRow>
+                <TableRow types="HEAD">
                   <TH>SL</TH>
                   <TH>Schedule Name</TH>
 
@@ -80,7 +80,7 @@ const TrainSchedulePage = ({ limit, page, search }: TQuery) => {
       "
               >
                 {schedules?.map((item: IScheduleResponse, idx: number) => (
-                  <TableRow key={item.id}>
+                  <TableRow key={item.id} idx={idx} types="BODY">
                     <TD>{idx + 1}</TD>
                     <TD>{item.name}</TD>
 

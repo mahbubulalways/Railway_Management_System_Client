@@ -41,6 +41,8 @@ const ShowStaffPermissionModal = ({
               title="Error"
             />
           </>
+        ) : !staffType?.staffPermissions.length ? (
+          <CustomStatus fullScreen={false} type="empty" />
         ) : (
           <>
             {staffType?.staffPermissions?.map((sp, idx) => (

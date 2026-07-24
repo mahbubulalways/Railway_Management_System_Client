@@ -45,9 +45,6 @@ const StaffTypePage = ({ page, limit }: { page: number; limit: number }) => {
     setSelectedStaffId(staffId);
   };
 
-  console.log("permissio " + openPermissionModal);
-  console.log(selectedStaffId);
-  console.log("delete " + openDeleteModal);
   return (
     <div className="relative">
       <div className="flex items-center justify-between pb-2">
@@ -72,7 +69,7 @@ const StaffTypePage = ({ page, limit }: { page: number; limit: number }) => {
         <>
           <Table>
             <TableHead>
-              <TableRow>
+              <TableRow types="HEAD">
                 <TH>SL</TH>
                 <TH>Staff Type</TH>
                 <TH>Permissions</TH>
@@ -88,7 +85,7 @@ const StaffTypePage = ({ page, limit }: { page: number; limit: number }) => {
   "
             >
               {staffTypes?.map((item: IStaffType, idx: number) => (
-                <TableRow key={item?.id}>
+                <TableRow key={item?.id} types="BODY" idx={idx}>
                   <TD>{++idx}</TD>
                   <TD>
                     {item?.type

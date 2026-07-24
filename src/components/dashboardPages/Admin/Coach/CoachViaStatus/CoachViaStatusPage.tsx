@@ -33,7 +33,7 @@ const CoachViaStatusPage = ({
   );
   const coaches = data?.data?.data || [];
   const meta = data?.data?.meta as TMetaConfig;
-
+  console.log(coaches);
   return (
     <div>
       <div className="flex items-center justify-between pb-2">
@@ -62,7 +62,7 @@ const CoachViaStatusPage = ({
         <div className="relative">
           <Table>
             <TableHead>
-              <TableRow>
+              <TableRow types="HEAD">
                 <TH>SL</TH>
                 <TH>Code</TH>
                 <TH>Name</TH>
@@ -71,6 +71,7 @@ const CoachViaStatusPage = ({
                 <TH>Layout</TH>
                 <TH>Seats</TH>
                 <TH>Staus</TH>
+                {status == "ASSIGNED" ? <TH>Asssigned</TH> : ""}
                 <TH>Date</TH>
                 <TH>Action</TH>
               </TableRow>
@@ -83,7 +84,7 @@ const CoachViaStatusPage = ({
   "
             >
               {coaches?.map((item: ICoach, idx: number) => (
-                <TableRow key={item?.id}>
+                <TableRow key={item?.id} types="BODY" idx={idx}>
                   <TD>{++idx}</TD>
                   <TD>{item?.coachCode}</TD>
                   <TD>{item?.coachNumber}</TD>
@@ -92,6 +93,7 @@ const CoachViaStatusPage = ({
                   <TD>{item?.coachModel?.layoutType}</TD>
                   <TD>{item?.coachModel?.totalSeats}</TD>
                   <TD>{item?.status}</TD>
+                  <TD>{item?.trainCoach?.train?.name}</TD>
                   <TD>{moment(item?.createdAt).format("ll")}</TD>
 
                   <TD>
@@ -100,7 +102,7 @@ const CoachViaStatusPage = ({
                         {
                           id: 1,
                           label: "View Details",
-                          path: `coaches/${item?.id}`,
+                          path: `${item?.id}`,
                         },
                       ]}
                     />

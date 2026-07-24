@@ -4,10 +4,7 @@ import CustomModal from "../reusable/CustomModal";
 import { TCustomModalProps } from "@/interface/modal";
 import { FieldError, FieldValues, useForm } from "react-hook-form";
 import Button from "../reusable/Button";
-import {
-  useCreatePermisisonMutation,
-  useGetAllPermissionForStaffTypeQuery,
-} from "@/redux/features/permission.feature";
+import { useGetAllPermissionForStaffTypeQuery } from "@/redux/features/permission.feature";
 import { useState } from "react";
 import { useAlert } from "../Alert/useAlert";
 import CustomTagInput from "../reusable/CustomTagInput";
@@ -37,7 +34,7 @@ const CreateStaffTypeModal = ({ isOpen, onClose }: TCustomModalProps) => {
     label: "permission",
     value: "id",
   });
-
+  console.log(data);
   const [errorMsg, setErroMsg] = useState<string>("");
   const { showAlert } = useAlert();
   const onSubmit = async (data: FieldValues) => {

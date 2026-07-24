@@ -15,6 +15,7 @@ const staffTypeApi = baseApi.injectEndpoints({
       query: (id) => `/staff-type/single/${id}`,
       providesTags: ["STAFF_TYPE"],
     }),
+
     // CREATE StaffType
     createStaffType: builder.mutation({
       query: (data) => ({
@@ -24,6 +25,11 @@ const staffTypeApi = baseApi.injectEndpoints({
       }),
       invalidatesTags: ["STAFF_TYPE"],
     }),
+
+    //  GET STAFF TYPE OPTIONS
+    getStaffTypeOption: builder.query({
+      query: () => `/staff-type/option`,
+    }),
   }),
 });
 
@@ -31,4 +37,5 @@ export const {
   useGetStaffTypesQuery,
   useCreateStaffTypeMutation,
   useGetSingleStaffTypeQuery,
+  useGetStaffTypeOptionQuery,
 } = staffTypeApi;

@@ -1,13 +1,29 @@
-export const TableRow = ({ children }: { children: React.ReactNode }) => {
+export const TableRow = ({
+  children,
+  idx = 0,
+  types,
+}: {
+  children: React.ReactNode;
+  idx?: number;
+  types: "BODY" | "HEAD";
+}) => {
+  const isOdd = idx % 2 !== 0;
+
   return (
     <tr
-      className="
+      className={`
         group
         border-b border-gray-100
         transition-all
         duration-200
-        hover:bg-[#006A4E]/5
-      "
+     ${
+       types === "BODY"
+         ? `${isOdd ? "bg-gray-50" : "bg-white"} hover:bg-gray-200`
+         : ""
+     }
+  
+        
+      `}
     >
       {children}
     </tr>

@@ -23,6 +23,7 @@ export interface ITrain {
   schedules: IScheduleResponse[];
   _count: {
     coaches: number;
+    schedules: number;
   };
 }
 
