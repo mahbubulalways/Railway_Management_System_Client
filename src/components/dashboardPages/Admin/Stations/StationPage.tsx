@@ -4,7 +4,7 @@ import CustomLoader from "@/components/reusable/CustomLoader";
 import CustomStatus from "@/components/reusable/CustomStatus";
 import SearchBar from "@/components/reusable/SearchBar";
 import { Table } from "@/components/reusable/Table";
-import { TableAction } from "@/components/reusable/TableAction";
+import { ActionButton } from "@/components/reusable/ActionButton";
 import { TD, TH } from "@/components/reusable/TableCell";
 import { TableHead } from "@/components/reusable/TableHead";
 import { TablePagination } from "@/components/reusable/TablePagination";
@@ -83,7 +83,7 @@ const StationPage = ({
                   <TD>{item?.status}</TD>
                   <TD>{moment(item?.established).format("ll")}</TD>
                   <TD>
-                    <TableAction
+                    <ActionButton
                       links={[
                         {
                           id: 1,

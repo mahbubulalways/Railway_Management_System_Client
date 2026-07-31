@@ -35,7 +35,7 @@ const getRoleBaseRedirect = (token: string) => {
   const info = jwtDecode(token) as IToken;
   switch (info?.role) {
     case "STAFF":
-      return "/dashboard/staff";
+      return "/dashboard/staff/info";
     case "ADMIN":
       return "/dashboard/admin";
     case "SUPER_ADMIN":

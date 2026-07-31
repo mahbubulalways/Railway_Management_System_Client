@@ -1,6 +1,6 @@
 import { IPermission } from "./permission";
 
-interface StaffPermission {
+export interface IStaffPermission {
   permission: IPermission;
 }
 
@@ -9,5 +9,5 @@ export interface IStaffType {
   type: string;
   createdAt: string;
   updatedAt: string;
-  staffPermissions: StaffPermission[];
+  staffPermissions: IStaffPermission[];
 }

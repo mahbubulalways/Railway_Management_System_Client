@@ -1,3 +1,5 @@
+import { TStaffResponse } from "./staff";
+
 export type IPlatform = {
   stationId: string;
   id: string;
@@ -44,6 +46,7 @@ export type IStation = {
 
 export type IStationWithPlatforms = {
   platforms: IPlatform[];
+  staffs: TStaffResponse[];
 } & IStation;
 
 export type TCreateStation = {

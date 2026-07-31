@@ -1,6 +1,5 @@
 "use client";
 import { logOutUserFromSystem } from "@/service/logOutFromTheSystem";
-import { useRouter } from "next/navigation";
 import { Dispatch, SetStateAction, useState } from "react";
 import {
   FiMenu,
@@ -18,12 +17,11 @@ const AdminDashboardNavbar = ({
 }) => {
   const [profileOpen, setProfileOpen] = useState(false);
   const [logout, setLogout] = useState(false);
-  const router = useRouter();
   const handleLogout = () => {
     logOutUserFromSystem();
     setLogout(true);
     setTimeout(() => {
-      router.push("/");
+      window.location.replace("/");
     }, 3000);
   };
 

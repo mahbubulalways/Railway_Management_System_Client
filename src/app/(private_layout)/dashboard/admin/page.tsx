@@ -1,7 +1,5 @@
-import React from "react";
+import ConstructionPage from "@/components/shared/ConstructionPage";
 
-const Page = () => {
-  return <div></div>;
-};
-
-export default Page;
+export default function Page() {
+  return <ConstructionPage />;
+}

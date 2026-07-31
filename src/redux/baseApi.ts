@@ -21,6 +21,8 @@ export const baseApi = createApi({
     "ROUTE",
     "TRAIN",
     "SCHEDULE",
+    "STAFF",
+    "SINGLE_STATION",
   ],
 });
 

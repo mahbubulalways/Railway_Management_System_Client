@@ -23,7 +23,9 @@ export function proxy(request: NextRequest) {
 
   if (user?.role === "STAFF") {
     if (!pathname.startsWith("/dashboard/staff")) {
-      return NextResponse.redirect(new URL("/dashboard/staff", request.url));
+      return NextResponse.redirect(
+        new URL("/dashboard/staff/info", request.url),
+      );
     }
   }
 

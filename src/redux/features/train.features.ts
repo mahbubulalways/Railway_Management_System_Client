@@ -36,6 +36,11 @@ const trainApi = baseApi.injectEndpoints({
       }),
       invalidatesTags: ["TRAIN"],
     }),
+
+    getAllTrainOfAStation: builder.query({
+      query: () => `/train/station`,
+      providesTags: ["TRAIN"],
+    }),
   }),
 });
 
@@ -44,4 +49,5 @@ export const {
   useGetAllTrainQuery,
   useGetSingleTrainQuery,
   useAddCoachsToTrainMutation,
+  useGetAllTrainOfAStationQuery,
 } = trainApi;

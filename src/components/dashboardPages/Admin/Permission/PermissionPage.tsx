@@ -5,7 +5,7 @@ import CustomLoader from "@/components/reusable/CustomLoader";
 import CustomStatus from "@/components/reusable/CustomStatus";
 import SearchBar from "@/components/reusable/SearchBar";
 import { Table } from "@/components/reusable/Table";
-import { TableAction } from "@/components/reusable/TableAction";
+import { ActionButton } from "@/components/reusable/ActionButton";
 import { TD, TH } from "@/components/reusable/TableCell";
 import { TableHead } from "@/components/reusable/TableHead";
 import { TablePagination } from "@/components/reusable/TablePagination";
@@ -55,7 +55,7 @@ const PermissionPage = ({ page, limit, search }: TQuery) => {
           )} */}
           <Table>
             <TableHead>
-              <TableRow>
+              <TableRow types="HEAD">
                 <TH>SL</TH>
                 <TH>Permission</TH>
                 <TH>Created At</TH>
@@ -70,7 +70,7 @@ const PermissionPage = ({ page, limit, search }: TQuery) => {
   "
             >
               {permissions?.map((item: IPermission, idx: number) => (
-                <TableRow key={item?.id}>
+                <TableRow key={item?.id} types="BODY" idx={idx}>
                   <TD>{++idx}</TD>
                   <TD>
                     {item?.permission
@@ -82,7 +82,7 @@ const PermissionPage = ({ page, limit, search }: TQuery) => {
                   <TD>{new Date(item?.createdAt).toLocaleDateString()}</TD>
 
                   <TD>
-                    <TableAction />
+                    <ActionButton />
                   </TD>
                 </TableRow>
               ))}

@@ -6,7 +6,7 @@ import CustomLoader from "@/components/reusable/CustomLoader";
 import CustomStatus from "@/components/reusable/CustomStatus";
 import SearchBar from "@/components/reusable/SearchBar";
 import { Table } from "@/components/reusable/Table";
-import { TableAction } from "@/components/reusable/TableAction";
+import { ActionButton } from "@/components/reusable/ActionButton";
 import { TD, TH } from "@/components/reusable/TableCell";
 import { TableHead } from "@/components/reusable/TableHead";
 import { TablePagination } from "@/components/reusable/TablePagination";
@@ -97,7 +97,7 @@ const StaffTypePage = ({ page, limit }: { page: number; limit: number }) => {
                   <TD>{moment(item?.createdAt).format("lll")}</TD>
 
                   <TD>
-                    <TableAction
+                    <ActionButton
                       links={links}
                       buttons={[
                         {

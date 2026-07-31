@@ -29,6 +29,22 @@ const stationApi = baseApi.injectEndpoints({
       }),
       invalidatesTags: ["STATION"],
     }),
+
+    // GET OWN STATION STAFF
+    getStaffStation: builder.query({
+      query: () => `/station/staff`,
+      providesTags: ["SINGLE_STATION"],
+    }),
+
+    // UPDATE STATION ENTITY
+    updateStationEntity: builder.mutation({
+      query: (data) => ({
+        url: `/station/update-entity/${data.id}`,
+        method: "PATCH",
+        body: { data: data.data },
+      }),
+      invalidatesTags: ["SINGLE_STATION"],
+    }),
   }),
 });
 
@@ -37,4 +53,6 @@ export const {
   useGetSingleStationQuery,
   useCreateStationMutation,
   useGetStationOptinsQuery,
+  useGetStaffStationQuery,
+  useUpdateStationEntityMutation,
 } = stationApi;

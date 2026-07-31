@@ -30,6 +30,24 @@ const staffTypeApi = baseApi.injectEndpoints({
     getStaffTypeOption: builder.query({
       query: () => `/staff-type/option`,
     }),
+
+    // GET STAFF
+    getAllStaff: builder.query({
+      query: (payload) =>
+        `/staff/all?page=${payload?.page}&limit=${payload?.limit}`,
+      providesTags: ["STAFF"],
+    }),
+
+    // GET SINGLE STAFF
+    getSingleStaff: builder.query({
+      query: (id) => `/staff/single/${id}`,
+      providesTags: ["STAFF"],
+    }),
+
+    // GET STAFFS OF A STATION (STATION MANAGER)
+    getStaffOfAStation: builder.query({
+      query: () => `/staff/station`,
+    }),
   }),
 });
 
@@ -38,4 +56,7 @@ export const {
   useCreateStaffTypeMutation,
   useGetSingleStaffTypeQuery,
   useGetStaffTypeOptionQuery,
+  useGetAllStaffQuery,
+  useGetSingleStaffQuery,
+  useGetStaffOfAStationQuery,
 } = staffTypeApi;

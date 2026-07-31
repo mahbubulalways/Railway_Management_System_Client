@@ -4,14 +4,17 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ChevronDown, ChevronRight, X } from "lucide-react";
 import { Dispatch, SetStateAction, useState } from "react";
-import { adminSidebarItems, ISidebarItem } from "./sidebarItems";
+import { useGenerateSidebarItems, ISidebarItem } from "./sidebarItems";
+import { JwtTokenPayload } from "@/interface/token";
 
 const AdminSidebarDrawer = ({
   open,
   setOpen,
+  user,
 }: {
   open: boolean;
   setOpen: Dispatch<SetStateAction<boolean>>;
+  user: JwtTokenPayload | null;
 }) => {
   const [openMenu, setOpenMenu] = useState<string | null>(null);
 
@@ -99,7 +102,7 @@ const AdminSidebarDrawer = ({
   scrollbar-track-transparent
   "
           >
-            {adminSidebarItems.map((item: ISidebarItem) => (
+            {useGenerateSidebarItems(user)?.map((item: ISidebarItem) => (
               <div key={item.label}>
                 {item.children ? (
                   <>
