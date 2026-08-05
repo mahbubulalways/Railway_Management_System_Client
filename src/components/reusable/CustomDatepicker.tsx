@@ -21,6 +21,7 @@ type TCustomDatePicker = {
   maxFutureDays?: number;
   minDate?: Date;
   maxDate?: Date;
+  border?: boolean;
 };
 
 const CustomDatePicker = ({
@@ -35,6 +36,7 @@ const CustomDatePicker = ({
   maxFutureDays,
   minDate,
   maxDate,
+  border = true,
 }: TCustomDatePicker) => {
   const [focused, setFocused] = useState(false);
 
@@ -74,10 +76,10 @@ const CustomDatePicker = ({
         render={({ field }) => (
           <div className="custom-date-picker-wrapper relative w-full">
             <div
-              className={`min-h-12  relative flex w-full items-center rounded-lg border px-4 py-2 outline-none transition-colors ${
+              className={`min-h-12  relative flex w-full items-center rounded-lg ${border ? "border px-4 py-2 outline-none" : ""} transition-colors ${
                 error
                   ? "border-2 border-red-500"
-                  : "border-gray-300 focus-within:ring-2 focus-within:ring-[#00664A]"
+                  : `${border ? "border-gray-300 focus-within:ring-2 focus-within:ring-[#00664A]" : ""}`
               }`}
             >
               <DatePicker
@@ -94,7 +96,7 @@ const CustomDatePicker = ({
                 dateFormat={modeConfig[mode].dateFormat}
                 showYearPicker={mode === "year"}
                 showMonthYearPicker={mode === "month"}
-                className="w-full cursor-pointer bg-transparent pr-6 text-sm text-gray-700 outline-none"
+                className="w-full cursor-pointer bg-transparent pr-6 text-sm text-black outline-none placeholder:text-[16px] placeholder:text-black/50"
                 calendarClassName="custom-datepicker-calendar"
                 popperPlacement="bottom-start"
                 onKeyDown={(e) => {
@@ -102,9 +104,13 @@ const CustomDatePicker = ({
                 }}
               />
               {/* Calendar Icon Right Side */}
-              <div className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-gray-400">
-                <Calendar size={18} />
-              </div>
+              {border ? (
+                <div className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-gray-400">
+                  <Calendar size={18} />
+                </div>
+              ) : (
+                ""
+              )}
             </div>
 
             {/* scoped global styles for the react-datepicker popup */}

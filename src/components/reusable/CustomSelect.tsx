@@ -27,6 +27,7 @@ type TCustomSelectProps = {
   searchable?: boolean;
   /** true hole selected value clear korar X button dekhabe */
   clearable?: boolean;
+  border?: boolean;
 };
 
 const CustomSelect = ({
@@ -41,6 +42,7 @@ const CustomSelect = ({
   isError,
   searchable = false,
   clearable = false,
+  border = true,
 }: TCustomSelectProps) => {
   const [search, setSearch] = useState("");
   const [open, setOpen] = useState(false);
@@ -136,6 +138,7 @@ const CustomSelect = ({
           setSearch("");
         };
 
+        console.log(error);
         return (
           <div className="flex flex-col gap-2" ref={wrapperRef}>
             {label && (
@@ -155,10 +158,10 @@ const CustomSelect = ({
                     setOpen((prev) => !prev);
                   }
                 }}
-                className={`flex min-h-12 w-full cursor-pointer items-center gap-2 rounded-lg border px-3 py-3 ${
+                className={`flex min-h-12 w-full cursor-pointer items-center gap-2 rounded-lg ${border ? "border px-3 py-3" : ""} ${
                   error
                     ? "border-2 border-red-500"
-                    : "border-gray-300 focus-within:ring-2 focus-within:ring-[#00664A]"
+                    : `${border ? "border-gray-300 focus-within:ring-2 focus-within:ring-[#00664A]" : ""}`
                 }`}
               >
                 {searchable ? (
@@ -195,13 +198,16 @@ const CustomSelect = ({
                     <X size={14} />
                   </button>
                 )}
-
-                <ChevronDown
-                  size={18}
-                  className={`text-gray-500 transition-transform ${
-                    open ? "rotate-180" : ""
-                  }`}
-                />
+                {border ? (
+                  <ChevronDown
+                    size={18}
+                    className={`text-gray-500 transition-transform ${
+                      open ? "rotate-180" : ""
+                    }`}
+                  />
+                ) : (
+                  ""
+                )}
               </div>
 
               {open &&

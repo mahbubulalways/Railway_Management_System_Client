@@ -109,8 +109,8 @@ const CustomModal = ({
             max-h-[calc(90vh-90px)]
             overflow-y-auto
 
-            p-7
-
+            py-5
+px-3
             scrollbar-thin
             scrollbar-thumb-gray-300
           "

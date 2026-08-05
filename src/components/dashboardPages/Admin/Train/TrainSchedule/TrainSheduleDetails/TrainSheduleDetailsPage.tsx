@@ -18,7 +18,7 @@ const TrainSheduleDetailsPage = ({ id }: { id: string }) => {
   if (isLoading) return <CustomLoader />;
   if (isError) return <CustomStatus type="error" />;
   if (!schedule) return <CustomStatus type="empty" />;
-  console.log(schedule.route.routeStations);
+
   return (
     <div className="space-y-6">
       <div className="relative overflow-hidden rounded-3xl border border-gray-100 bg-white shadow">

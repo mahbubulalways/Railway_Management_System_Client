@@ -63,4 +63,5 @@ export interface IScheduleResponse {
   train: ITrain;
   createdAt: string;
   updatedAt: string;
+  arrialvalTime?: string;
 }

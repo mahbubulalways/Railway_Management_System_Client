@@ -32,6 +32,14 @@ const scheduleApi = baseApi.injectEndpoints({
       query: (id: string) => `/schedule/single/${id}`,
       providesTags: ["SCHEDULE"],
     }),
+
+    searchTrain: builder.query({
+      query: (data) => ({
+        url: `/schedule/search-train?from=${data.from}&to=${data.to}&date=${data.date}`,
+        method: "GET",
+      }),
+      // invalidatesTags: ["S"],
+    }),
   }),
 });
 
@@ -40,4 +48,5 @@ export const {
   useGetTrainRouteOptionsQuery,
   useGetSingleScheduleQuery,
   useGetAllScheduleQuery,
+  useSearchTrainQuery,
 } = scheduleApi;
